@@ -1,5 +1,75 @@
-# Object-tracking-methods-for-autonomous-mobile-robot-RPI4
- Object detection and tracking by various image processing algorithms and AI using Raspberry Pi 4.
- 
- For object tracking, image processing and deep learning methods were used to track 3 different ways. In image processing, ping-pong ball tracking process was performed and based on color and   shape, the methods of tracking by color and circle hough  transformation  were tried separately. In the follow-up process according to color, green colored ping-pong ball  tracking process was performed. First, the conversion from RGB space to HSV space  was carried out. The upper and lower value range of the green color in this color space was determined and the  masking process was performed. After the masking was done, the contour surrounding the boundaries of the color   was drawn. The movement of the car is modeled according to the values of the contour area . The algorithm is designed according to the area of the object in the camera where it will accelerate, slow down, go and stop at constant speed . Unwanted situations are as   follows; items in the room, which are different but the same color as the ping-pong ball, and which are masked, were also sometimes followed by the vehicle. There have been differences in the determination of the color of the object according to the brightness level of the space. In the follow-up made with the Circle Hough Transformation method, it was aimed   to detect the circles in the camera by using the hough circle function provided by   the OpenCV library. Image processing steps such as blurring and turning to black and white were applied, and then circle detection was started with hough circle. The circle is determined and rounded around  it according to the radius and coordinate information. After this process, the movement of the vehicle was applied in this method as well as in the color tracking according to the area value of the drawn circle.  As a result, the shape of the ping-pong ball was determined as a circle and followed. According to the light condition of the apartment , it has become difficult to detect in some cases. Since it cannot be seen as a full circle in a very light environment, it has been observed that the circle cannot be   detected and the follow-up process cannot be started . In object detection and tracking with deep learning, the object detection methods used in the literature were examined and the detection method was asked to work   at acceptable speeds and effectively in autonomous mobile robots with relatively lower processing power than computers. For this purpose, it was decided to use MobileNet v1 SSD as an object detector   . In addition, MS COCO data set including many different object types (91 pieces) was   used and the tracking process of the desired object was  created in such a way that it could be selected according to the request of the person. All the labeled data in the data set   are displayed in the box on the screen. At the same time, the MobileNet v1 SSD model, trained with the COCO data set.MS the class names on the left top of the box, is saved in the previously created virtual environment. The necessary installations have   been made in the virtual environment and the libraries to be used in the code have also been installed. In object detection and   tracking, different object classes detected in the camera are detected and seen in the box and with the class  label. In order to follow the object, an object in the data set is  selected and the tracking takes place according to that object. For example; Let the phone be the object we want tracked . With the condition in the code, if the label is a phone,  we calculate the contour area of the object and move to the motor driving steps. The tracking algorithm of the tool  is the same as in the image processing steps. In this way, the tracking process was tested according to 3 different objects . With this method, objects can be detected and tracked correctly on each object , but although the working speed of the program has been effective, it is  slow compared to other methods and there is a mismatch with the motor driver. When the object appears in the camera and the   engine moves and the turn takes place, the vehicle  begins to turn continuously in the same direction. Because as per the algorithm, after the following object is detected once in the program cycle and the movement of the vehicle is  determined, the object is detected again in the other cycle and the vehicle is stuck in the previous state without moving to the state where the vehicle will move according to the   new area value, and the vehicle starts to rotate   in the same direction continuously . Hardware adjustment can be made to eliminate this problem . The fact that the program is slow in the deep learning method, so  using a computer more equipped than the Raspberry  pi  4 mini computer can solve this problem. Another  method may be to replace the motor drive.  Since pwm cannot be used   effectively in  the program, the motors run fast and enter the cycle. For this, Arduino  can be used  to make more effective use of   PWM control.   With these studies, knowledge and experience about the design of autonomous mobile vehicles  were obtained. It has been a comprehensive study both software and hardware. Today, studies for autonomous mobile vehicles, which are used for industrial, military, agricultural, reconnaissance, etc. purposes and  are becoming widespread day by day, are also increasing.   With this project, it is aimed to learn the necessary information and to design an autonomous mobile vehicle that works correctly and efficiently.    
- 
+# Object Tracking for Autonomous Mobile Robot (Raspberry Pi 4)
+
+# # An autonomous mobile robot that can detect and track objects using image processing and deep learning methods on a Raspberry Pi 4. The robot can follow objects in real-time and adjust its movement accordingly.
+
+# # # Features
+
+- Track objects using color detection (HSV color space).
+
+- Detect circular objects using Hough Circle Transform.
+
+- Use MobileNet SSD deep learning for multiple object classes.
+
+- Real-time robot movement control based on detected objects.
+
+
+# # # Methods
+# # # # 1. Color-Based Tracking
+
+- Convert RGB → HSV.
+
+- Mask the target color (e.g., green ping-pong ball).
+
+- Detect contours and control movement based on contour area.
+
+# # # # 2. Circle Detection (Hough Transform)
+
+- Convert image to grayscale & blur.
+
+- Detect circles with OpenCV Hough Circle function.
+
+- Track object and control robot based on circle area.
+
+# # # # 3. Deep Learning (MobileNet SSD)
+
+- Pre-trained on MS COCO dataset (91 classes)
+
+- Detect multiple objects and select a target for tracking
+
+- Track object using contour-based movement control
+
+# # # Hardware
+
+- Raspberry Pi 4.
+
+- Camera module for real-time video.
+
+- Motors with PWM control (Arduino recommended for optimization).
+
+# # # Challenges
+
+- Lighting conditions affect image processing detection.
+
+- Deep learning is slower on Raspberry Pi 4.
+
+- Motor control mismatch may cause continuous rotation in one direction.
+
+# # # Results
+
+- Color and circle tracking are fast but sensitive to the environment.
+
+- Deep learning allows flexible object tracking, but is slower.
+
+- Robot can follow multiple object types in real-time.
+  
+# # # Future Improvements
+
+- Improve motor control with Arduino for precise PWM
+
+- Optimize deep learning model for faster real-time tracking
+
+- Add support for more object classes and dynamic selection
+
+# # # License
+
+This project is open-source. Feel free to use and modify.

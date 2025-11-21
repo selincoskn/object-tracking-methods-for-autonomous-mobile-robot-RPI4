@@ -1,8 +1,8 @@
 # Object Tracking for Autonomous Mobile Robot (Raspberry Pi 4)
 
-# # An autonomous mobile robot that can detect and track objects using image processing and deep learning methods on a Raspberry Pi 4. The robot can follow objects in real-time and adjust its movement accordingly.
+An autonomous mobile robot that can detect and track objects using image processing and deep learning methods on a Raspberry Pi 4. The robot can follow objects in real-time and adjust its movement accordingly.
 
-# # # Features
+# # Features
 
 - Track objects using color detection (HSV color space).
 
@@ -13,8 +13,8 @@
 - Real-time robot movement control based on detected objects.
 
 
-# # # Methods
-# # # # 1. Color-Based Tracking
+# # Methods
+# # # 1. Color-Based Tracking
 
 - Convert RGB → HSV.
 
@@ -22,7 +22,7 @@
 
 - Detect contours and control movement based on contour area.
 
-# # # # 2. Circle Detection (Hough Transform)
+# # # 2. Circle Detection (Hough Transform)
 
 - Convert image to grayscale & blur.
 
@@ -30,7 +30,7 @@
 
 - Track object and control robot based on circle area.
 
-# # # # 3. Deep Learning (MobileNet SSD)
+# # # 3. Deep Learning (MobileNet SSD)
 
 - Pre-trained on MS COCO dataset (91 classes)
 
@@ -38,7 +38,7 @@
 
 - Track object using contour-based movement control
 
-# # # Hardware
+# # Hardware
 
 - Raspberry Pi 4.
 
@@ -46,7 +46,7 @@
 
 - Motors with PWM control (Arduino recommended for optimization).
 
-# # # Challenges
+# # Challenges
 
 - Lighting conditions affect image processing detection.
 
@@ -54,7 +54,7 @@
 
 - Motor control mismatch may cause continuous rotation in one direction.
 
-# # # Results
+# # Results
 
 - Color and circle tracking are fast but sensitive to the environment.
 
@@ -62,7 +62,7 @@
 
 - Robot can follow multiple object types in real-time.
   
-# # # Future Improvements
+# # Future Improvements
 
 - Improve motor control with Arduino for precise PWM
 
